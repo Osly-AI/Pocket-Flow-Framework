@@ -1,1474 +1,494 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-      
-        <link rel="prev" href="../memory/">
-      
-      
-        <link rel="next" href="../parallel/">
-      
-      
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
-    
-    
-      
-        <title>(Advanced) Multi-Agents - Pocket Docs</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
-      
-        
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
-      
-      
-
-
-    
-    
-      
-    
-    
-      
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica+Neue,+Helvetica,+Arial,+sans-serif:300,300i,400,400i,700,700i%7CMenlo,+Monaco,+Courier+New,+monospace:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Helvetica Neue, Helvetica, Arial, sans-serif";--md-code-font:"Menlo, Monaco, Courier New, monospace"}</style>
-      
-    
-    
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="light" data-md-color-primary="indigo" data-md-color-accent="indigo">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
         
-        <a href="#advanced-multi-agents" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>(Advanced) Multi-Agents - Pocket Flow Framework</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
 
-<header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Pocket Docs" class="md-header__button md-logo" aria-label="Pocket Docs" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Pocket Flow Framework</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            Pocket Docs
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../usage/" class="nav-link">Usage</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../getting-started.md" class="nav-link">Getting Started</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Core Concepts</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../agent-basics.md" class="dropdown-item">Agent Basics</a>
+</li>
+                                    
+<li>
+    <a href="../node/" class="dropdown-item">Node Fundamentals</a>
+</li>
+                                    
+<li>
+    <a href="../flow/" class="dropdown-item">Understanding Flows</a>
+</li>
+                                    
+<li>
+    <a href="../structure/" class="dropdown-item">Data Structures</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Features & Extensions</a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Basic Features</a>
+    <ul class="dropdown-menu">
             
-              (Advanced) Multi-Agents
+<li>
+    <a href="../async/" class="dropdown-item">Async Processing</a>
+</li>
             
-          </span>
+<li>
+    <a href="../batch/" class="dropdown-item">Batch Operations</a>
+</li>
+            
+<li>
+    <a href="../communication/" class="dropdown-item">Communication Patterns</a>
+</li>
+            
+<li>
+    <a href="../decomposition.md" class="dropdown-item">Task Decomposition</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Advanced Capabilities</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../llm/" class="dropdown-item">Large Language Models</a>
+</li>
+            
+<li>
+    <a href="../mapreduce/" class="dropdown-item">MapReduce Workflows</a>
+</li>
+            
+<li>
+    <a href="../memory/" class="dropdown-item">Memory & Caching</a>
+</li>
+            
+<li>
+    <a href="../multi-agent.md" class="dropdown-item">Multi-Agent Systems</a>
+</li>
+            
+<li>
+    <a href="../parallel/" class="dropdown-item">Parallel Execution</a>
+</li>
+            
+<li>
+    <a href="../rag/" class="dropdown-item">RAG</a>
+</li>
+            
+<li>
+    <a href="../tools.md" class="dropdown-item">Tool Integrations</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Additional Resources</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../apps/" class="dropdown-item">Sample Applications</a>
+</li>
+                                    
+<li>
+    <a href="../paradigm/" class="dropdown-item">Conceptual Paradigms</a>
+</li>
+                                    
+<li>
+    <a href="../viz/" class="dropdown-item">Visualizations</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    
-      
-    
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
         </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
+
     
-    
-  </nav>
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
             
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
-        
-  
-    
-  
-  Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../usage/" class="md-tabs__link">
-        
-  
-    
-  
-  Usage
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../guide/" class="md-tabs__link">
-          
-  
-  Getting Started
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../agent/" class="md-tabs__link">
-          
-  
-  Core Concepts
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../async/" class="md-tabs__link">
-          
-  
-  Features & Extensions
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../apps/" class="md-tabs__link">
-          
-  
-  Additional Resources
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ul>
-  </div>
-</nav>
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Pocket Docs" class="md-nav__button md-logo" aria-label="Pocket Docs" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    Pocket Docs
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Home
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../usage/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Usage
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Getting Started
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            Getting Started
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guide/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Quick Start
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../preparation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Setup Steps
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../core_abstraction/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Key Abstractions
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Core Concepts
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            Core Concepts
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../agent/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Agent Basics
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../node/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Node Fundamentals
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flow/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Understanding Flows
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../structure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Data Structures
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    Features & Extensions
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            Features & Extensions
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../async/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Async Processing
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../batch/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Batch Operations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../communication/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Communication Patterns
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../decomp/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Task Decomposition
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../llm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Large Language Models
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mapreduce/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MapReduce Workflows
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../memory/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Memory & Caching
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Multi-Agent Systems
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Multi-Agent Systems
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-1-agent-communication-with-a-shared-queue" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example 1: Agent Communication with a Shared Queue
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-2-interactive-multi-agent-example-taboo-game" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example 2: Interactive Multi-Agent Example: Taboo Game
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example 2: Interactive Multi-Agent Example: Taboo Game">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#building-multi-agent-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Building Multi-Agent Systems
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../parallel/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Parallel Execution
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../rag/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Retrieval Augmented Generation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tool/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tool Integrations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Additional Resources
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            Additional Resources
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Sample Applications
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../paradigm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Conceptual Paradigms
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../viz/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Visualizations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-1-agent-communication-with-a-shared-queue" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example 1: Agent Communication with a Shared Queue
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-2-interactive-multi-agent-example-taboo-game" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example 2: Interactive Multi-Agent Example: Taboo Game
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example 2: Interactive Multi-Agent Example: Taboo Game">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#building-multi-agent-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Building Multi-Agent Systems
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-
-<h1 id="advanced-multi-agents">(Advanced) Multi-Agents<a class="headerlink" href="#advanced-multi-agents" title="Permanent link">&para;</a></h1>
+            <li class="nav-item" data-bs-level="1"><a href="#advanced-multi-agents" class="nav-link">(Advanced) Multi-Agents</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#example-1-agent-communication-with-a-shared-queue" class="nav-link">Example 1: Agent Communication with a Shared Queue</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#example-2-interactive-multi-agent-example-taboo-game" class="nav-link">Example 2: Interactive Multi-Agent Example: Taboo Game</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="advanced-multi-agents">(Advanced) Multi-Agents</h1>
 <p>Sometimes, you want <strong>multiple agents</strong> (or flows) working together, each performing different tasks or roles. They can communicate by passing messages or updating shared states. Below are some <strong>TypeScript</strong> examples.</p>
 <hr />
-<h2 id="example-1-agent-communication-with-a-shared-queue">Example 1: Agent Communication with a Shared Queue<a class="headerlink" href="#example-1-agent-communication-with-a-shared-queue" title="Permanent link">&para;</a></h2>
+<h2 id="example-1-agent-communication-with-a-shared-queue">Example 1: Agent Communication with a Shared Queue</h2>
 <p>Here's how to implement communication using a queue-like structure in Node.js. The agent listens for messages, processes them, and loops back to await more. We will simulate an asynchronous message queue using standard JavaScript patterns (e.g., an array plus <code>setInterval</code> or an event-based approach).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BaseNode</span><span class="p">,</span><span class="w"> </span><span class="nx">Flow</span><span class="p">,</span><span class="w"> </span><span class="nx">DEFAULT_ACTION</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../src/pocket&quot;</span><span class="p">;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// We&#39;ll define a simple queue interface</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kd">interface</span><span class="w"> </span><span class="nx">MessageQueue</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="c1">// optional signals or a real concurrency approach</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1">// This is our AgentNode, which reads a message from the queue each time it runs.</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">// For demonstration, we poll the queue at intervals to simulate asynchronous arrival of messages.</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AgentNode</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">BaseNode</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">prepAsync</span><span class="p">(</span><span class="nx">sharedState</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">messageQueue</span><span class="o">:</span><span class="w"> </span><span class="kt">MessageQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">params</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">]</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">MessageQueue</span><span class="p">;</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">messageQueue</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">messageQueue</span><span class="p">.</span><span class="nx">messages</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Invalid message queue&quot;</span><span class="p">);</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="c1">// Wait until there&#39;s at least one message or return null if no messages are pending</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">messageQueue</span><span class="p">.</span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="c1">// Dequeue the first message</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">messageQueue</span><span class="p">.</span><span class="nx">messages</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">execAsync</span><span class="p">(</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">message</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">      </span><span class="c1">// No new message</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="c1">// Process or log the message</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Agent received: </span><span class="si">${</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="c1">// You could also call an LLM or do more sophisticated processing here</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">message</span><span class="p">;</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">postAsync</span><span class="p">(</span><span class="nx">sharedState</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">,</span><span class="w"> </span><span class="nx">prepResult</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">execResult</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="c1">// We can continue if there&#39;s more work to do; otherwise, we might wait or exit.</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="c1">// For this example, we just loop forever (polling), so we return &quot;loop&quot;</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;loop&quot;</span><span class="p">;</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="p">}</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="c1">// Example usage</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span><span class="c1">// Our simulated queue</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messageQueue</span><span class="o">:</span><span class="w"> </span><span class="kt">MessageQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">    </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span><span class="p">};</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">  </span><span class="c1">// Create the agent node</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AgentNode</span><span class="p">();</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">  </span><span class="c1">// Connect the agent node to itself on the &quot;loop&quot; action</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">  </span><span class="nx">agent</span><span class="p">.</span><span class="nx">addSuccessor</span><span class="p">(</span><span class="nx">agent</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;loop&quot;</span><span class="p">);</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">  </span><span class="c1">// Create a flow starting from our agent</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">flow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Flow</span><span class="p">(</span><span class="nx">agent</span><span class="p">);</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">  </span><span class="c1">// Set the flow params so the agent node knows about the queue</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">  </span><span class="nx">flow</span><span class="p">.</span><span class="nx">setParams</span><span class="p">({</span><span class="w"> </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="kt">messageQueue</span><span class="w"> </span><span class="p">});</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">  </span><span class="c1">// We&#39;ll also define a simple message generator that appends to the queue periodically</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">  </span><span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sampleMessages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">      </span><span class="s2">&quot;System status: all systems operational&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">      </span><span class="s2">&quot;Memory usage: normal&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">      </span><span class="s2">&quot;Network connectivity: stable&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">      </span><span class="s2">&quot;Processing load: optimal&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">    </span><span class="p">];</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">sampleMessages</span><span class="p">[</span><span class="nx">timestamp</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">sampleMessages</span><span class="p">.</span><span class="nx">length</span><span class="p">]</span><span class="si">}</span><span class="sb"> | timestamp_</span><span class="si">${</span><span class="nx">timestamp</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">    </span><span class="nx">messageQueue</span><span class="p">.</span><span class="nx">messages</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>
-<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="w">  </span><span class="c1">// Run the flow</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">shared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="w">  </span><span class="c1">// Because it loops indefinitely, this flow never truly ends unless we forcibly stop it.</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="w">  </span><span class="c1">// In a real app, you&#39;d have a stopping condition or signal.</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="w">  </span><span class="nx">flow</span><span class="p">.</span><span class="nx">runAsync</span><span class="p">(</span><span class="nx">shared</span><span class="p">).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Flow execution failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="w">  </span><span class="p">});</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="p">})();</span>
-</code></pre></div>
+<pre><code class="language-typescript">import { BaseNode, Flow, DEFAULT_ACTION } from &quot;../src/pocket&quot;;
+
+// We'll define a simple queue interface
+interface MessageQueue {
+  messages: string[];
+  // optional signals or a real concurrency approach
+}
+
+// This is our AgentNode, which reads a message from the queue each time it runs.
+// For demonstration, we poll the queue at intervals to simulate asynchronous arrival of messages.
+export class AgentNode extends BaseNode {
+  public async prepAsync(sharedState: any): Promise&lt;string | null&gt; {
+    const messageQueue: MessageQueue = this.params[&quot;messages&quot;] as MessageQueue;
+    if (!messageQueue || !Array.isArray(messageQueue.messages)) {
+      throw new Error(&quot;Invalid message queue&quot;);
+    }
+
+    // Wait until there's at least one message or return null if no messages are pending
+    if (messageQueue.messages.length === 0) {
+      return null;
+    }
+
+    // Dequeue the first message
+    return messageQueue.messages.shift() || null;
+  }
+
+  public async execAsync(message: string | null): Promise&lt;string | null&gt; {
+    if (message === null) {
+      // No new message
+      return null;
+    }
+
+    // Process or log the message
+    console.log(`Agent received: ${message}`);
+    // You could also call an LLM or do more sophisticated processing here
+    return message;
+  }
+
+  public async postAsync(sharedState: any, prepResult: string | null, execResult: string | null): Promise&lt;string&gt; {
+    // We can continue if there's more work to do; otherwise, we might wait or exit.
+    // For this example, we just loop forever (polling), so we return &quot;loop&quot;
+    return &quot;loop&quot;;
+  }
+}
+
+// Example usage
+(async () =&gt; {
+  // Our simulated queue
+  const messageQueue: MessageQueue = {
+    messages: [],
+  };
+
+  // Create the agent node
+  const agent = new AgentNode();
+  // Connect the agent node to itself on the &quot;loop&quot; action
+  agent.addSuccessor(agent, &quot;loop&quot;);
+
+  // Create a flow starting from our agent
+  const flow = new Flow(agent);
+
+  // Set the flow params so the agent node knows about the queue
+  flow.setParams({ messages: messageQueue });
+
+  // We'll also define a simple message generator that appends to the queue periodically
+  setInterval(() =&gt; {
+    const timestamp = Date.now();
+    const sampleMessages = [
+      &quot;System status: all systems operational&quot;,
+      &quot;Memory usage: normal&quot;,
+      &quot;Network connectivity: stable&quot;,
+      &quot;Processing load: optimal&quot;,
+    ];
+    const msg = `${sampleMessages[timestamp % sampleMessages.length]} | timestamp_${timestamp}`;
+    messageQueue.messages.push(msg);
+  }, 1000);
+
+  // Run the flow
+  const shared = {};
+  // Because it loops indefinitely, this flow never truly ends unless we forcibly stop it.
+  // In a real app, you'd have a stopping condition or signal.
+  flow.runAsync(shared).catch((err) =&gt; {
+    console.error(&quot;Flow execution failed:&quot;, err);
+  });
+})();
+</code></pre>
 <p><strong>Explanation:</strong>
 - We store messages in <code>messageQueue.messages</code>.<br />
 - Each agent run cycle uses <code>prepAsync</code> to dequeue one message.<br />
 - The node returns <code>"loop"</code> in <code>postAsync</code>, telling the flow to run the same node again for the next message.</p>
 <hr />
-<h2 id="example-2-interactive-multi-agent-example-taboo-game">Example 2: Interactive Multi-Agent Example: Taboo Game<a class="headerlink" href="#example-2-interactive-multi-agent-example-taboo-game" title="Permanent link">&para;</a></h2>
+<h2 id="example-2-interactive-multi-agent-example-taboo-game">Example 2: Interactive Multi-Agent Example: Taboo Game</h2>
 <p>Here's a more complex setup with <strong>two agents</strong> (a "Hinter" and a "Guesser") playing a simplified word-guessing game. They communicate via two queues:<br />
 - <code>hinterQueue</code> sends guesses to the Hinter agent,<br />
 - <code>guesserQueue</code> sends hints to the Guesser agent.</p>
 <p><strong>Warning</strong>: Below is a conceptual example. In a real Node.js environment, you might orchestrate concurrency differently (e.g., using <code>Promise.all</code>, or a dedicated event system).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BaseNode</span><span class="p">,</span><span class="w"> </span><span class="nx">Flow</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../src/pocket&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// Placeholder LLM function (replace with real calls as needed)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">callLLM</span><span class="p">(</span><span class="nx">prompt</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="c1">// For demonstration</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`LLM says: </span><span class="si">${</span><span class="nx">prompt</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">60</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="cm">/** </span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="cm"> * AsyncHinter:</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="cm"> *  1) Waits for a guess from the guesser (via hinterQueue).</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="cm"> *  2) Generates a new hint while avoiding certain forbidden words.</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="cm"> *  3) Sends the hint to guesserQueue.</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="cm"> */</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AsyncHinter</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">BaseNode</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">prepAsync</span><span class="p">(</span><span class="nx">sharedState</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="p">{</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nx">guess</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="nx">forbidden</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="nx">pastGuesses</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="c1">// Dequeue guess</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">hinterQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sharedState</span><span class="p">.</span><span class="nx">hinterQueue</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">hinterQueue</span><span class="p">))</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;hinterQueue not found&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hinterQueue</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// no new guess in queue</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">guess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hinterQueue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">    </span><span class="c1">// If guess == &quot;GAME_OVER&quot;, we can end the Hinter agent</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">guess</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;GAME_OVER&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">      </span><span class="nx">guess</span><span class="p">,</span>
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">      </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">sharedState.target_word</span><span class="p">,</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">      </span><span class="nx">forbidden</span><span class="o">:</span><span class="w"> </span><span class="kt">sharedState.forbidden_words</span><span class="p">,</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">      </span><span class="nx">pastGuesses</span><span class="o">:</span><span class="w"> </span><span class="kt">sharedState.past_guesses</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="p">[],</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">    </span><span class="p">};</span>
-<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>
-<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">execAsync</span><span class="p">(</span><span class="nx">inputs</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">    </span><span class="nx">guess</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">    </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">    </span><span class="nx">forbidden</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">    </span><span class="nx">pastGuesses</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">inputs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// means we should end</span>
-<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">guess</span><span class="p">,</span><span class="w"> </span><span class="nx">target</span><span class="p">,</span><span class="w"> </span><span class="nx">forbidden</span><span class="p">,</span><span class="w"> </span><span class="nx">pastGuesses</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">inputs</span><span class="p">;</span>
-<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>
-<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">    </span><span class="c1">// The prompt for generating a hint from the LLM</span>
-<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Generate a 1-sentence hint for the word &quot;</span><span class="si">${</span><span class="nx">target</span><span class="si">}</span><span class="sb">&quot;. Avoid these words: </span><span class="si">${</span><span class="nx">forbidden</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="si">}</span><span class="sb">. `</span><span class="p">;</span>
-<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">guess</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">      </span><span class="nx">prompt</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">`Previous guess was: &quot;</span><span class="si">${</span><span class="nx">guess</span><span class="si">}</span><span class="sb">&quot;. `</span><span class="p">;</span>
-<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">pastGuesses</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">      </span><span class="nx">prompt</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">`Past wrong guesses: </span><span class="si">${</span><span class="nx">pastGuesses</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="si">}</span><span class="sb">. `</span><span class="p">;</span>
-<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">    </span><span class="nx">prompt</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;Hint: use at most 5 words.&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>
-<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">hint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">callLLM</span><span class="p">(</span><span class="nx">prompt</span><span class="p">);</span>
-<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\nHinter: Here&#39;s your hint -&gt; </span><span class="si">${</span><span class="nx">hint</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">hint</span><span class="p">;</span>
-<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a>
-<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">postAsync</span><span class="p">(</span>
-<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="w">    </span><span class="nx">sharedState</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">,</span>
-<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">    </span><span class="nx">prepResult</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="w">      </span><span class="nx">guess</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a><span class="w">      </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="w">      </span><span class="nx">forbidden</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="w">      </span><span class="nx">pastGuesses</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="w">    </span><span class="nx">execResult</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span>
-<a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a><span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a><span class="w">    </span><span class="c1">// If no inputs or execResult, game is over or no messages left</span>
-<a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">prepResult</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">execResult</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;end&quot;</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a>
-<a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a><span class="w">    </span><span class="c1">// Send the generated hint to guesserQueue</span>
-<a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">guesserQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sharedState</span><span class="p">.</span><span class="nx">guesserQueue</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a><span class="w">    </span><span class="nx">guesserQueue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">execResult</span><span class="p">);</span>
-<a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a>
-<a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;continue&quot;</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a><span class="p">}</span>
-<a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>
-<a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a><span class="cm">/** </span>
-<a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a><span class="cm"> * AsyncGuesser:</span>
-<a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a><span class="cm"> *  1) Waits for a hint from guesserQueue.</span>
-<a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a><span class="cm"> *  2) Generates a guess.</span>
-<a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a><span class="cm"> *  3) Checks correctness. If correct, game ends; else adds guess to pastGuesses and re-queues for Hinter.</span>
-<a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a><span class="cm"> */</span>
-<a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AsyncGuesser</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">BaseNode</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">prepAsync</span><span class="p">(</span><span class="nx">sharedState</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="p">{</span>
-<a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a><span class="w">    </span><span class="nx">hint</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a><span class="w">    </span><span class="nx">pastGuesses</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a><span class="w">    </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">guesserQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sharedState</span><span class="p">.</span><span class="nx">guesserQueue</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">guesserQueue</span><span class="p">))</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;guesserQueue not found&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a>
-<a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">guesserQueue</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-111" name="__codelineno-1-111" href="#__codelineno-1-111"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">hint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">guesserQueue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a><span class="w">      </span><span class="nx">hint</span><span class="p">,</span>
-<a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a><span class="w">      </span><span class="nx">pastGuesses</span><span class="o">:</span><span class="w"> </span><span class="kt">sharedState.past_guesses</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="p">[],</span>
-<a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a><span class="w">      </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">sharedState.target_word</span><span class="p">,</span>
-<a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a><span class="w">    </span><span class="p">};</span>
-<a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a>
-<a id="__codelineno-1-119" name="__codelineno-1-119" href="#__codelineno-1-119"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">execAsync</span><span class="p">(</span><span class="nx">inputs</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-120" name="__codelineno-1-120" href="#__codelineno-1-120"></a><span class="w">    </span><span class="nx">hint</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-121" name="__codelineno-1-121" href="#__codelineno-1-121"></a><span class="w">    </span><span class="nx">pastGuesses</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-122" name="__codelineno-1-122" href="#__codelineno-1-122"></a><span class="w">    </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<a id="__codelineno-1-123" name="__codelineno-1-123" href="#__codelineno-1-123"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-124" name="__codelineno-1-124" href="#__codelineno-1-124"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">inputs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-125" name="__codelineno-1-125" href="#__codelineno-1-125"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<a id="__codelineno-1-126" name="__codelineno-1-126" href="#__codelineno-1-126"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-127" name="__codelineno-1-127" href="#__codelineno-1-127"></a>
-<a id="__codelineno-1-128" name="__codelineno-1-128" href="#__codelineno-1-128"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">hint</span><span class="p">,</span><span class="w"> </span><span class="nx">pastGuesses</span><span class="p">,</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">inputs</span><span class="p">;</span>
-<a id="__codelineno-1-129" name="__codelineno-1-129" href="#__codelineno-1-129"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`We have hint: &quot;</span><span class="si">${</span><span class="nx">hint</span><span class="si">}</span><span class="sb">&quot;. Past wrong guesses: </span><span class="si">${</span><span class="nx">pastGuesses</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="si">}</span><span class="sb">. Make a new single-word guess:`</span><span class="p">;</span>
-<a id="__codelineno-1-130" name="__codelineno-1-130" href="#__codelineno-1-130"></a><span class="w">    </span><span class="c1">// In reality, you&#39;d refine this logic or call an actual LLM</span>
-<a id="__codelineno-1-131" name="__codelineno-1-131" href="#__codelineno-1-131"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">guess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">callLLM</span><span class="p">(</span><span class="nx">prompt</span><span class="p">);</span>
-<a id="__codelineno-1-132" name="__codelineno-1-132" href="#__codelineno-1-132"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Guesser: I guess it&#39;s -&gt; </span><span class="si">${</span><span class="nx">guess</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-1-133" name="__codelineno-1-133" href="#__codelineno-1-133"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">guess</span><span class="p">;</span>
-<a id="__codelineno-1-134" name="__codelineno-1-134" href="#__codelineno-1-134"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-1-135" name="__codelineno-1-135" href="#__codelineno-1-135"></a>
-<a id="__codelineno-1-136" name="__codelineno-1-136" href="#__codelineno-1-136"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">postAsync</span><span class="p">(</span>
-<a id="__codelineno-1-137" name="__codelineno-1-137" href="#__codelineno-1-137"></a><span class="w">    </span><span class="nx">sharedState</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">,</span>
-<a id="__codelineno-1-138" name="__codelineno-1-138" href="#__codelineno-1-138"></a><span class="w">    </span><span class="nx">prepResult</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">hint</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">pastGuesses</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span><span class="w"> </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-<a id="__codelineno-1-139" name="__codelineno-1-139" href="#__codelineno-1-139"></a><span class="w">    </span><span class="nx">execResult</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span>
-<a id="__codelineno-1-140" name="__codelineno-1-140" href="#__codelineno-1-140"></a><span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-141" name="__codelineno-1-141" href="#__codelineno-1-141"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">prepResult</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">execResult</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-142" name="__codelineno-1-142" href="#__codelineno-1-142"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;end&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-143" name="__codelineno-1-143" href="#__codelineno-1-143"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-144" name="__codelineno-1-144" href="#__codelineno-1-144"></a>
-<a id="__codelineno-1-145" name="__codelineno-1-145" href="#__codelineno-1-145"></a><span class="w">    </span><span class="c1">// Check correctness</span>
-<a id="__codelineno-1-146" name="__codelineno-1-146" href="#__codelineno-1-146"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">guessLower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">execResult</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">();</span>
-<a id="__codelineno-1-147" name="__codelineno-1-147" href="#__codelineno-1-147"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">targetLower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prepResult</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">();</span>
-<a id="__codelineno-1-148" name="__codelineno-1-148" href="#__codelineno-1-148"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">guessLower</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">targetLower</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-149" name="__codelineno-1-149" href="#__codelineno-1-149"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Game Over -&gt; Correct guess!&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-150" name="__codelineno-1-150" href="#__codelineno-1-150"></a><span class="w">      </span><span class="c1">// Signal the hinter to stop</span>
-<a id="__codelineno-1-151" name="__codelineno-1-151" href="#__codelineno-1-151"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">hinterQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sharedState</span><span class="p">.</span><span class="nx">hinterQueue</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-152" name="__codelineno-1-152" href="#__codelineno-1-152"></a><span class="w">      </span><span class="nx">hinterQueue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;GAME_OVER&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-153" name="__codelineno-1-153" href="#__codelineno-1-153"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;end&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-154" name="__codelineno-1-154" href="#__codelineno-1-154"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-155" name="__codelineno-1-155" href="#__codelineno-1-155"></a>
-<a id="__codelineno-1-156" name="__codelineno-1-156" href="#__codelineno-1-156"></a><span class="w">    </span><span class="c1">// If guess is wrong, add to pastGuesses</span>
-<a id="__codelineno-1-157" name="__codelineno-1-157" href="#__codelineno-1-157"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">sharedState</span><span class="p">.</span><span class="nx">past_guesses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-158" name="__codelineno-1-158" href="#__codelineno-1-158"></a><span class="w">      </span><span class="nx">sharedState</span><span class="p">.</span><span class="nx">past_guesses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-<a id="__codelineno-1-159" name="__codelineno-1-159" href="#__codelineno-1-159"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-160" name="__codelineno-1-160" href="#__codelineno-1-160"></a><span class="w">    </span><span class="nx">sharedState</span><span class="p">.</span><span class="nx">past_guesses</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">execResult</span><span class="p">);</span>
-<a id="__codelineno-1-161" name="__codelineno-1-161" href="#__codelineno-1-161"></a>
-<a id="__codelineno-1-162" name="__codelineno-1-162" href="#__codelineno-1-162"></a><span class="w">    </span><span class="c1">// Send guess to the Hinter for feedback</span>
-<a id="__codelineno-1-163" name="__codelineno-1-163" href="#__codelineno-1-163"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">hinterQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sharedState</span><span class="p">.</span><span class="nx">hinterQueue</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<a id="__codelineno-1-164" name="__codelineno-1-164" href="#__codelineno-1-164"></a><span class="w">    </span><span class="nx">hinterQueue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">execResult</span><span class="p">);</span>
-<a id="__codelineno-1-165" name="__codelineno-1-165" href="#__codelineno-1-165"></a>
-<a id="__codelineno-1-166" name="__codelineno-1-166" href="#__codelineno-1-166"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;continue&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-167" name="__codelineno-1-167" href="#__codelineno-1-167"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-1-168" name="__codelineno-1-168" href="#__codelineno-1-168"></a><span class="p">}</span>
-<a id="__codelineno-1-169" name="__codelineno-1-169" href="#__codelineno-1-169"></a>
-<a id="__codelineno-1-170" name="__codelineno-1-170" href="#__codelineno-1-170"></a><span class="c1">// Example usage</span>
-<a id="__codelineno-1-171" name="__codelineno-1-171" href="#__codelineno-1-171"></a><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-172" name="__codelineno-1-172" href="#__codelineno-1-172"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">shared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-173" name="__codelineno-1-173" href="#__codelineno-1-173"></a><span class="w">    </span><span class="nx">target_word</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nostalgia&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-174" name="__codelineno-1-174" href="#__codelineno-1-174"></a><span class="w">    </span><span class="nx">forbidden_words</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;memory&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;past&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;remember&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;feeling&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;longing&quot;</span><span class="p">],</span>
-<a id="__codelineno-1-175" name="__codelineno-1-175" href="#__codelineno-1-175"></a><span class="w">    </span><span class="nx">hinterQueue</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">[],</span>
-<a id="__codelineno-1-176" name="__codelineno-1-176" href="#__codelineno-1-176"></a><span class="w">    </span><span class="nx">guesserQueue</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">[],</span>
-<a id="__codelineno-1-177" name="__codelineno-1-177" href="#__codelineno-1-177"></a><span class="w">    </span><span class="nx">past_guesses</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">[],</span>
-<a id="__codelineno-1-178" name="__codelineno-1-178" href="#__codelineno-1-178"></a><span class="w">  </span><span class="p">};</span>
-<a id="__codelineno-1-179" name="__codelineno-1-179" href="#__codelineno-1-179"></a>
-<a id="__codelineno-1-180" name="__codelineno-1-180" href="#__codelineno-1-180"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Game starting!&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-181" name="__codelineno-1-181" href="#__codelineno-1-181"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Target word: </span><span class="si">${</span><span class="nx">shared</span><span class="p">.</span><span class="nx">target_word</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-1-182" name="__codelineno-1-182" href="#__codelineno-1-182"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Forbidden words: </span><span class="si">${</span><span class="nx">shared</span><span class="p">.</span><span class="nx">forbidden_words</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-1-183" name="__codelineno-1-183" href="#__codelineno-1-183"></a>
-<a id="__codelineno-1-184" name="__codelineno-1-184" href="#__codelineno-1-184"></a><span class="w">  </span><span class="c1">// Initialize by sending an empty guess to Hinter</span>
-<a id="__codelineno-1-185" name="__codelineno-1-185" href="#__codelineno-1-185"></a><span class="w">  </span><span class="nx">shared</span><span class="p">.</span><span class="nx">hinterQueue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-186" name="__codelineno-1-186" href="#__codelineno-1-186"></a>
-<a id="__codelineno-1-187" name="__codelineno-1-187" href="#__codelineno-1-187"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hinter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AsyncHinter</span><span class="p">();</span>
-<a id="__codelineno-1-188" name="__codelineno-1-188" href="#__codelineno-1-188"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">guesser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AsyncGuesser</span><span class="p">();</span>
-<a id="__codelineno-1-189" name="__codelineno-1-189" href="#__codelineno-1-189"></a>
-<a id="__codelineno-1-190" name="__codelineno-1-190" href="#__codelineno-1-190"></a><span class="w">  </span><span class="c1">// In pocket.ts, you might have AsyncFlow (if your BaseNode variants are async).</span>
-<a id="__codelineno-1-191" name="__codelineno-1-191" href="#__codelineno-1-191"></a><span class="w">  </span><span class="c1">// For demonstration, assume Flow can handle async as well. </span>
-<a id="__codelineno-1-192" name="__codelineno-1-192" href="#__codelineno-1-192"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hinterFlow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Flow</span><span class="p">(</span><span class="nx">hinter</span><span class="p">);</span>
-<a id="__codelineno-1-193" name="__codelineno-1-193" href="#__codelineno-1-193"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">guesserFlow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Flow</span><span class="p">(</span><span class="nx">guesser</span><span class="p">);</span>
-<a id="__codelineno-1-194" name="__codelineno-1-194" href="#__codelineno-1-194"></a>
-<a id="__codelineno-1-195" name="__codelineno-1-195" href="#__codelineno-1-195"></a><span class="w">  </span><span class="c1">// Connect each node to itself to allow multiple turns</span>
-<a id="__codelineno-1-196" name="__codelineno-1-196" href="#__codelineno-1-196"></a><span class="w">  </span><span class="nx">hinter</span><span class="p">.</span><span class="nx">addSuccessor</span><span class="p">(</span><span class="nx">hinter</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;continue&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-197" name="__codelineno-1-197" href="#__codelineno-1-197"></a><span class="w">  </span><span class="nx">guesser</span><span class="p">.</span><span class="nx">addSuccessor</span><span class="p">(</span><span class="nx">guesser</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;continue&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-198" name="__codelineno-1-198" href="#__codelineno-1-198"></a>
-<a id="__codelineno-1-199" name="__codelineno-1-199" href="#__codelineno-1-199"></a><span class="w">  </span><span class="c1">// Start both flows concurrently</span>
-<a id="__codelineno-1-200" name="__codelineno-1-200" href="#__codelineno-1-200"></a><span class="w">  </span><span class="c1">// Typically you&#39;d want a coordination mechanism like Promise.all or a dedicated runner</span>
-<a id="__codelineno-1-201" name="__codelineno-1-201" href="#__codelineno-1-201"></a><span class="w">  </span><span class="nx">hinterFlow</span><span class="p">.</span><span class="nx">runAsync</span><span class="p">(</span><span class="nx">shared</span><span class="p">).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Hinter flow failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">));</span>
-<a id="__codelineno-1-202" name="__codelineno-1-202" href="#__codelineno-1-202"></a><span class="w">  </span><span class="nx">guesserFlow</span><span class="p">.</span><span class="nx">runAsync</span><span class="p">(</span><span class="nx">shared</span><span class="p">).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Guesser flow failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">));</span>
-<a id="__codelineno-1-203" name="__codelineno-1-203" href="#__codelineno-1-203"></a><span class="p">})();</span>
-</code></pre></div>
+<pre><code class="language-typescript">import { BaseNode, Flow } from &quot;../src/pocket&quot;;
+
+// Placeholder LLM function (replace with real calls as needed)
+async function callLLM(prompt: string): Promise&lt;string&gt; {
+  // For demonstration
+  return `LLM says: ${prompt.substring(0, 60)}`;
+}
+
+/** 
+ * AsyncHinter:
+ *  1) Waits for a guess from the guesser (via hinterQueue).
+ *  2) Generates a new hint while avoiding certain forbidden words.
+ *  3) Sends the hint to guesserQueue.
+ */
+export class AsyncHinter extends BaseNode {
+  public async prepAsync(sharedState: any): Promise&lt;{
+    guess: string;
+    target: string;
+    forbidden: string[];
+    pastGuesses: string[];
+  } | null&gt; {
+    // Dequeue guess
+    const hinterQueue = sharedState.hinterQueue as string[];
+    if (!Array.isArray(hinterQueue)) throw new Error(&quot;hinterQueue not found&quot;);
+
+    if (hinterQueue.length === 0) {
+      return null; // no new guess in queue
+    }
+    const guess = hinterQueue.shift() as string;
+
+    // If guess == &quot;GAME_OVER&quot;, we can end the Hinter agent
+    if (guess === &quot;GAME_OVER&quot;) {
+      return null;
+    }
+
+    return {
+      guess,
+      target: sharedState.target_word,
+      forbidden: sharedState.forbidden_words,
+      pastGuesses: sharedState.past_guesses ?? [],
+    };
+  }
+
+  public async execAsync(inputs: {
+    guess: string;
+    target: string;
+    forbidden: string[];
+    pastGuesses: string[];
+  } | null): Promise&lt;string | null&gt; {
+    if (!inputs) {
+      return null; // means we should end
+    }
+    const { guess, target, forbidden, pastGuesses } = inputs;
+
+    // The prompt for generating a hint from the LLM
+    let prompt = `Generate a 1-sentence hint for the word &quot;${target}&quot;. Avoid these words: ${forbidden.join(&quot;, &quot;)}. `;
+    if (guess !== &quot;&quot;) {
+      prompt += `Previous guess was: &quot;${guess}&quot;. `;
+    }
+    if (pastGuesses.length) {
+      prompt += `Past wrong guesses: ${pastGuesses.join(&quot;, &quot;)}. `;
+    }
+    prompt += &quot;Hint: use at most 5 words.&quot;;
+
+    const hint = await callLLM(prompt);
+    console.log(`\nHinter: Here's your hint -&gt; ${hint}`);
+    return hint;
+  }
+
+  public async postAsync(
+    sharedState: any,
+    prepResult: {
+      guess: string;
+      target: string;
+      forbidden: string[];
+      pastGuesses: string[];
+    } | null,
+    execResult: string | null
+  ): Promise&lt;string&gt; {
+    // If no inputs or execResult, game is over or no messages left
+    if (!prepResult || execResult === null) {
+      return &quot;end&quot;; 
+    }
+
+    // Send the generated hint to guesserQueue
+    const guesserQueue = sharedState.guesserQueue as string[];
+    guesserQueue.push(execResult);
+
+    return &quot;continue&quot;; 
+  }
+}
+
+/** 
+ * AsyncGuesser:
+ *  1) Waits for a hint from guesserQueue.
+ *  2) Generates a guess.
+ *  3) Checks correctness. If correct, game ends; else adds guess to pastGuesses and re-queues for Hinter.
+ */
+export class AsyncGuesser extends BaseNode {
+  public async prepAsync(sharedState: any): Promise&lt;{
+    hint: string;
+    pastGuesses: string[];
+    target: string;
+  } | null&gt; {
+    const guesserQueue = sharedState.guesserQueue as string[];
+    if (!Array.isArray(guesserQueue)) throw new Error(&quot;guesserQueue not found&quot;);
+
+    if (guesserQueue.length === 0) {
+      return null;
+    }
+    const hint = guesserQueue.shift() as string;
+    return {
+      hint,
+      pastGuesses: sharedState.past_guesses ?? [],
+      target: sharedState.target_word,
+    };
+  }
+
+  public async execAsync(inputs: {
+    hint: string;
+    pastGuesses: string[];
+    target: string;
+  } | null): Promise&lt;string | null&gt; {
+    if (!inputs) {
+      return null;
+    }
+
+    const { hint, pastGuesses, target } = inputs;
+    let prompt = `We have hint: &quot;${hint}&quot;. Past wrong guesses: ${pastGuesses.join(&quot;, &quot;)}. Make a new single-word guess:`;
+    // In reality, you'd refine this logic or call an actual LLM
+    const guess = await callLLM(prompt);
+    console.log(`Guesser: I guess it's -&gt; ${guess}`);
+    return guess;
+  }
+
+  public async postAsync(
+    sharedState: any,
+    prepResult: { hint: string; pastGuesses: string[]; target: string } | null,
+    execResult: string | null
+  ): Promise&lt;string&gt; {
+    if (!prepResult || execResult === null) {
+      return &quot;end&quot;;
+    }
+
+    // Check correctness
+    const guessLower = execResult.trim().toLowerCase();
+    const targetLower = prepResult.target.trim().toLowerCase();
+    if (guessLower === targetLower) {
+      console.log(&quot;Game Over -&gt; Correct guess!&quot;);
+      // Signal the hinter to stop
+      const hinterQueue = sharedState.hinterQueue as string[];
+      hinterQueue.push(&quot;GAME_OVER&quot;);
+      return &quot;end&quot;;
+    }
+
+    // If guess is wrong, add to pastGuesses
+    if (!sharedState.past_guesses) {
+      sharedState.past_guesses = [];
+    }
+    sharedState.past_guesses.push(execResult);
+
+    // Send guess to the Hinter for feedback
+    const hinterQueue = sharedState.hinterQueue as string[];
+    hinterQueue.push(execResult);
+
+    return &quot;continue&quot;;
+  }
+}
+
+// Example usage
+(async () =&gt; {
+  const shared = {
+    target_word: &quot;nostalgia&quot;,
+    forbidden_words: [&quot;memory&quot;, &quot;past&quot;, &quot;remember&quot;, &quot;feeling&quot;, &quot;longing&quot;],
+    hinterQueue: [] as string[],
+    guesserQueue: [] as string[],
+    past_guesses: [] as string[],
+  };
+
+  console.log(&quot;Game starting!&quot;);
+  console.log(`Target word: ${shared.target_word}`);
+  console.log(`Forbidden words: ${shared.forbidden_words}`);
+
+  // Initialize by sending an empty guess to Hinter
+  shared.hinterQueue.push(&quot;&quot;);
+
+  const hinter = new AsyncHinter();
+  const guesser = new AsyncGuesser();
+
+  // In pocket.ts, you might have AsyncFlow (if your BaseNode variants are async).
+  // For demonstration, assume Flow can handle async as well. 
+  const hinterFlow = new Flow(hinter);
+  const guesserFlow = new Flow(guesser);
+
+  // Connect each node to itself to allow multiple turns
+  hinter.addSuccessor(hinter, &quot;continue&quot;);
+  guesser.addSuccessor(guesser, &quot;continue&quot;);
+
+  // Start both flows concurrently
+  // Typically you'd want a coordination mechanism like Promise.all or a dedicated runner
+  hinterFlow.runAsync(shared).catch((err) =&gt; console.error(&quot;Hinter flow failed:&quot;, err));
+  guesserFlow.runAsync(shared).catch((err) =&gt; console.error(&quot;Guesser flow failed:&quot;, err));
+})();
+</code></pre>
 <p><strong>Explanation:</strong>
 1. <strong>Queues</strong>:<br />
    - <code>hinterQueue</code> carries guesses from the Guesser to the Hinter.<br />
@@ -1481,67 +501,88 @@
 4. <strong>Loops</strong>:<br />
    - Each agent calls <code>addSuccessor(node, "continue")</code> to keep running in a loop until the game finishes or no more messages are available.</p>
 <hr />
-<h3 id="building-multi-agent-systems">Building Multi-Agent Systems<a class="headerlink" href="#building-multi-agent-systems" title="Permanent link">&para;</a></h3>
+<h3 id="building-multi-agent-systems">Building Multi-Agent Systems</h3>
 <ul>
 <li><strong>Shared State</strong>: Store data structures like queues, agent statuses, or global game state in <code>sharedState</code>.</li>
 <li><strong>Flow</strong> or <strong>AsyncFlow</strong>: Each agent can be a node or sub-flow that loops for repeated interactions.</li>
 <li><strong>Communication</strong>: Use shared structures (queues or specialized abstractions) to pass messages or signals between agents.</li>
 </ul>
-<p>This design enables flexible <em>multi-agent</em> architectures, letting you break down complex tasks among multiple specialized agents.</p>
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-                
-              </article>
+<p>This design enables flexible <em>multi-agent</em> architectures, letting you break down complex tasks among multiple specialized agents.</p></div>
             </div>
-          
-          
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.highlight", "content.full_width"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-    
-    
-      <script src="../assets/javascripts/bundle.f1b6f286.min.js"></script>
-      
-    
-  </body>
+
+    </body>
 </html>
