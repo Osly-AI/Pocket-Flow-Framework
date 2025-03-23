@@ -31,7 +31,7 @@ abstract class BaseNode {
 Nodes are connected using `addSuccessor(node, action)` with "default" as the default action. Here's a complete example:
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 class MyNode extends BaseNode {
   async prep(sharedState: any): Promise<any> {

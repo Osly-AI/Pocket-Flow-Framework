@@ -13,7 +13,7 @@ Here are some example applications built with the Pocket Flow Framework to demon
 A flow that processes documents through multiple stages:
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 class DocumentLoaderNode extends BaseNode {
     async prep(sharedState: any) {

@@ -14,7 +14,7 @@ Many real-world tasks are too complex for a single LLM call. The solution is to 
 This example demonstrates how to break down the task of writing an article into smaller, manageable steps using TypeScript and the `pocket.ts` framework.
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // Placeholder for an asynchronous LLM call
 async function callLLM(prompt: string): Promise<string> {

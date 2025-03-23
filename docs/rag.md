@@ -15,7 +15,7 @@ When building LLM applications that **answer questions** from a corpus of docume
 Below is a two-Node flow in **TypeScript** that **builds an embedding index** and **answers questions** via a retrieval step.
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 /** 
  * Placeholder for your embedding + index building code.

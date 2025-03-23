@@ -13,13 +13,13 @@ This document demonstrates how to use **pocket.ts** in a typical TypeScript proj
 ## 1. Install & Import
 
 ```bash
-npm install pocket-ts
+npm install pocketflowframework
 ```
 
 In your TypeScript code:
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "pocket-ts"; 
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework"; 
 // Adjust import if your local path is different or you have a monorepo structure
 ```
 
@@ -179,7 +179,7 @@ Most LLM-based tasks or external API calls require **async**. With `pocket.ts`, 
 Below is a small end-to-end flow:
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "pocket-ts";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // Node #1: Greet user
 class GreetNode extends BaseNode {

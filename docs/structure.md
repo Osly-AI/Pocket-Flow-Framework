@@ -58,7 +58,7 @@ When prompting an LLM for **structured** output:
 Below is a **TypeScript** Node (`BaseNode`) demonstrating how to prompt an LLM for a YAML-based summary. It prompts for exactly 3 bullet points and then parses the LLM's response as YAML.
 
 ```typescript
-import { BaseNode, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, DEFAULT_ACTION } from "pocketflowframework";
 import { callLLM } from "../path/to/your/llm-wrapper";
 
 /**

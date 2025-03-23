@@ -33,7 +33,7 @@ A **Flow** begins with a **start** node (or another Flow). You create it using `
 Here's a minimal flow of two nodes in a chain:
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // Define NodeA
 class NodeA extends BaseNode {
@@ -104,7 +104,7 @@ Here's a simple expense approval flow that demonstrates branching and looping. T
 We can wire them like this:
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // Define ReviewExpenseNode
 class ReviewExpenseNode extends BaseNode {
@@ -265,7 +265,7 @@ In addition to the basic `Flow`, your framework supports specialized flows like 
 Continuing from the previous order processing example, suppose you want to add another layer of processing, such as logging and notification. You can create additional sub-flows or combine existing ones.
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // Define LoggingNode
 class LoggingNode extends BaseNode {

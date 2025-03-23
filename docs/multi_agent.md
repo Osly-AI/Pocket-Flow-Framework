@@ -16,7 +16,7 @@ Sometimes, you want **multiple agents** (or flows) working together, each perfor
 Here's how to implement communication using a queue-like structure in Node.js. The agent listens for messages, processes them, and loops back to await more. We will simulate an asynchronous message queue using standard JavaScript patterns (e.g., an array plus `setInterval` or an event-based approach).
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // We'll define a simple queue interface
 interface MessageQueue {
@@ -118,7 +118,7 @@ Here's a more complex setup with **two agents** (a "Hinter" and a "Guesser") pla
 **Warning**: Below is a conceptual example. In a real Node.js environment, you might orchestrate concurrency differently (e.g., using `Promise.all`, or a dedicated event system).
 
 ```typescript
-import { BaseNode, Flow } from "../src/pocket";
+import { BaseNode, Flow } from "pocketflowframework";
 
 // Placeholder LLM function (replace with real calls as needed)
 async function callLLM(prompt: string): Promise<string> {

@@ -39,7 +39,7 @@ It can also contain local file handlers, database connections, or a combination 
 ### Example
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // Placeholder for an asynchronous LLM call
 async function callLLM(prompt: string): Promise<string> {
@@ -134,7 +134,7 @@ Typically, **Params** are identifiers (e.g., file name, page number). Use them t
 ### Example
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // Placeholder for an asynchronous LLM call
 async function callLLM(prompt: string): Promise<string> {

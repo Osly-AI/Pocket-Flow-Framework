@@ -14,7 +14,7 @@ We don't provide built-in visualization and debugging. Here are some minimal imp
 This code recursively traverses the nested graph, assigns unique IDs to each node, and treats Flow nodes as subgraphs to generate Mermaid syntax for a hierarchical visualization.
 
 ```typescript
-import { BaseNode, Flow } from "../src/pocket";
+import { BaseNode, Flow } from "pocketflowframework";
 
 export function buildMermaid(start: BaseNode | Flow): string {
     const ids = new Map<any, string>();
@@ -78,7 +78,7 @@ export function buildMermaid(start: BaseNode | Flow): string {
 Here's a utility to help debug the execution flow of nodes by tracking the call stack:
 
 ```typescript
-import { BaseNode } from "../src/pocket";
+import { BaseNode } from "pocketflowframework";
 
 export function getNodeCallStack(): string[] {
     const stack = new Error().stack?.split("\n").slice(1) || [];
