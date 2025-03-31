@@ -32,7 +32,7 @@ A **BatchFlow** extends the [Flow](cci:2://file:///Users/helenazhang/Pocket-Flow
 Here’s an example of creating a simple flow with two nodes:
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 class NodeA extends BaseNode {
   async prep(sharedState: any): Promise<void> {}

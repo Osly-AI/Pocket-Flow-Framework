@@ -12,7 +12,7 @@ Process large inputs by splitting them into chunks (using something like a [Batc
 ### Example: Document Summarization
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // Placeholder LLM call that takes a prompt and returns a string
 async function callLLM(prompt: string): Promise<string> {

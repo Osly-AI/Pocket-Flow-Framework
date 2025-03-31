@@ -17,7 +17,7 @@ nav_order: 4
 A **BatchNode** extends `BaseNode` but changes how we handle execution:
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 class MapSummaries extends BaseNode {
     // The 'prep' method returns chunks to process
@@ -61,7 +61,7 @@ await flow.run({
 A **BatchFlow** runs a **Flow** multiple times with different parameters. Think of it as a loop that replays the Flow for each parameter set.
 
 ```typescript
-import { BaseNode, BatchFlow, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, BatchFlow, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // Define nodes for processing a single file
 class LoadFile extends BaseNode {

@@ -17,7 +17,7 @@ nav_order: 6
 This concept is akin to an **AsyncBatchNode** but runs `execAsync()` in **parallel** for each item. Let's define a `ParallelSummaries` node that splits an array of texts, calls an LLM for each one **in parallel**, and then combines results:
 
 ```typescript
-import { AsyncParallelBatchNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { AsyncParallelBatchNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 import { callLLM } from "../path/to/your/llm-wrapper";
 
 export class ParallelSummaries extends AsyncParallelBatchNode<string, string> {
@@ -71,7 +71,7 @@ flow.runAsync(shared).then(() => {
 A **parallel** version of a **BatchFlow**, where each iteration of a sub-flow runs **concurrently** using different parameters. For example, if you have a **LoadAndSummarizeFile** flow, you can run it in parallel for multiple files at once.
 
 ```typescript
-import { AsyncParallelBatchFlow, Flow } from "../src/pocket";
+import { AsyncParallelBatchFlow, Flow } from "pocketflowframework";
 import { LoadAndSummarizeFile } from "./somewhere";
 
 export class SummarizeMultipleFiles extends AsyncParallelBatchFlow {

@@ -18,7 +18,7 @@ This agent:
 3. Finally answers once enough context has been gathered.
 
 ```typescript
-import { BaseNode, Flow, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, Flow, DEFAULT_ACTION } from "pocketflowframework";
 
 // Placeholder for an LLM call
 async function callLLM(prompt: string): Promise<string> {

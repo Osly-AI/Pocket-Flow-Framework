@@ -72,7 +72,7 @@ By default, it rethrows the exception. But you can return a fallback result inst
 Below is a Node that reads file content from `sharedState`, calls an LLM to summarize it, and saves the result back:
 
 ```typescript
-import { BaseNode, DEFAULT_ACTION } from "../src/pocket";
+import { BaseNode, DEFAULT_ACTION } from "pocketflowframework";
 import { callLLM } from "../path/to/your/llm-wrapper";
 
 export class SummarizeFile extends BaseNode {
