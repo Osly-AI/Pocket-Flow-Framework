@@ -1,454 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
-     
-     
+
+
     <link rel="icon" type="image/png" sizes="192x192" href="img/android-chrome-192x192.png" />
-<link rel="icon" type="image/png" sizes="512x512" href="img/android-chrome-512x512.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
-<link rel="shortcut icon" type="image/png" sizes="48x48" href="img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="img/android-chrome-512x512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+    <link rel="shortcut icon" type="image/png" sizes="48x48" href="img/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
 
 
-    
- 
-<title>Home - Pocket Flow Framework</title>
 
 
-<link href="css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
-<link href="css/fontawesome/css/solid.min.css" rel="stylesheet">
-<link href="css/normalize.css" rel="stylesheet">
-<link href="css/terminal.css" rel="stylesheet">
-<link href="css/theme.css" rel="stylesheet">
-<link href="css/theme.tile_grid.css" rel="stylesheet">
-<link href="css/theme.footer.css" rel="stylesheet">
-<!-- default color palette -->
-<link href="css/palettes/default.css" rel="stylesheet">
+    <title>Home - Pocket Flow Framework</title>
 
-<!-- page layout -->
-<style>
-/* initially set page layout to a one column grid */
-.terminal-mkdocs-main-grid {
-    display: grid;
-    grid-column-gap: 1.4em;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-}
 
-/*  
+    <link href="css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="css/fontawesome/css/solid.min.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/terminal.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
+    <link href="css/theme.tile_grid.css" rel="stylesheet">
+    <link href="css/theme.footer.css" rel="stylesheet">
+    <!-- default color palette -->
+    <link href="css/palettes/default.css" rel="stylesheet">
+
+    <!-- page layout -->
+    <style>
+        /* initially set page layout to a one column grid */
+        .terminal-mkdocs-main-grid {
+            display: grid;
+            grid-column-gap: 1.4em;
+            grid-template-columns: auto;
+            grid-template-rows: auto;
+        }
+
+        /*  
 *   when side navigation is not hidden, use a two column grid.  
 *   if the screen is too narrow, fall back to the initial one column grid layout.
 *   in this case the main content will be placed under the navigation panel. 
 */
-@media only screen and (min-width: 70em) {
-    .terminal-mkdocs-main-grid {
-        grid-template-columns: 4fr 9fr;
-    }
-}</style>
+        @media only screen and (min-width: 70em) {
+            .terminal-mkdocs-main-grid {
+                grid-template-columns: 4fr 9fr;
+            }
+        }
+    </style>
 
 
 
-     
-    
-    
 
-    
+
+
+
+
     <!-- search css support -->
-<link href="css/search/bootstrap-modal.css" rel="stylesheet">
-<!-- search scripts -->
-<script>
-    var base_url = ".",
-    shortcuts = "{}";
-</script>
-<script src="js/jquery/jquery-1.10.1.min.js" defer></script>
-<script src="js/bootstrap/bootstrap.min.js" defer></script>
-<script src="js/mkdocs/base.js" defer></script>
-    
-    
-    
-    
-    <script src="search/main.js"></script>
-    
+    <link href="css/search/bootstrap-modal.css" rel="stylesheet">
+    <!-- search scripts -->
+    <script>
+        var base_url = ".",
+            shortcuts = "{}";
+    </script>
+    <script src="js/jquery/jquery-1.10.1.min.js" defer></script>
+    <script src="js/bootstrap/bootstrap.min.js" defer></script>
+    <script src="js/mkdocs/base.js" defer></script>
 
-    
+
+
+
+    <script src="search/main.js"></script>
+
+
+
 </head>
 
-<body class="terminal"><div class="container">
-    <div class="terminal-nav">
-        <header class="terminal-logo">
-            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Pocket Flow Framework</a></div>
-        </header>
-        
-        <nav class="terminal-menu">
-            
-            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
-                
-                
-                <li property="itemListElement" typeof="ListItem">
-                    <a href="." class="menu-item active" property="item" typeof="WebPage">
-                        <span property="name">Home</span>
-                    </a>
-                    <meta property="position" content="0">
-                </li>
-                
-                
-                <li property="itemListElement" typeof="ListItem">
-                    <a href="guide/" class="menu-item " property="item" typeof="WebPage">
-                        <span property="name">Guide</span>
-                    </a>
-                    <meta property="position" content="1">
-                </li>
-                
-                
-                
-                
-                
-                
-                <li property="itemListElement" typeof="ListItem">
-                    <a href="apps/" class="menu-item " property="item" typeof="WebPage">
-                        <span property="name">Applications</span>
-                    </a>
-                    <meta property="position" content="2">
-                </li>
-                
-                    
-                    
-
-
-<li property="itemListElement" typeof="ListItem">
-    <a href="#" class="menu-item" data-toggle="modal" data-target="#mkdocs_search_modal" property="item" typeof="SearchAction">
-        <i aria-hidden="true" class="fa fa-search"></i> <span property="name">Search</span>
-    </a>
-    <meta property="position" content="3">
-</li>
-                    
-            </ul>
-            
-        </nav>
-    </div>
-</div>
-        
+<body class="terminal">
     <div class="container">
-        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
-  
-    <ul class="terminal-mkdocs-side-nav-items">
-        
-          
+        <div class="terminal-nav">
+            <header class="terminal-logo">
+                <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="index.html" class="no-style">Pocket
+                        Flow Framework</a></div>
+            </header>
+
+            <nav class="terminal-menu">
+
+                <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+
+
+                    <li property="itemListElement" typeof="ListItem">
+                        <a href="index.html" class="menu-item active" property="item" typeof="WebPage">
+                            <span property="name">Home</span>
+                        </a>
+                        <meta property="position" content="0">
+                    </li>
+
+
+                    <li property="itemListElement" typeof="ListItem">
+                        <a href="guide/index.html" class="menu-item " property="item" typeof="WebPage">
+                            <span property="name">Guide</span>
+                        </a>
+                        <meta property="position" content="1">
+                    </li>
 
 
 
-<li class="terminal-mkdocs-side-nav-li">
-    
-    
-    
-        
-        <span class="
+
+
+
+                    <li property="itemListElement" typeof="ListItem">
+                        <a href="apps/index.html" class="menu-item " property="item" typeof="WebPage">
+                            <span property="name">Applications</span>
+                        </a>
+                        <meta property="position" content="2">
+                    </li>
+
+
+
+
+
+                    <li property="itemListElement" typeof="ListItem">
+                        <a href="#" class="menu-item" data-toggle="modal" data-target="#mkdocs_search_modal"
+                            property="item" typeof="SearchAction">
+                            <i aria-hidden="true" class="fa fa-search"></i> <span property="name">Search</span>
+                        </a>
+                        <meta property="position" content="3">
+                    </li>
+
+                </ul>
+
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid">
+            <aside id="terminal-mkdocs-side-panel">
+                <nav>
+
+                    <ul class="terminal-mkdocs-side-nav-items">
+
+
+
+
+
+                        <li class="terminal-mkdocs-side-nav-li">
+
+
+
+
+                            <span class="
 
     terminal-mkdocs-side-nav-item--active">Home</span>
-    
-    
-    
-  </li>
-        
-          
 
 
 
-<li class="terminal-mkdocs-side-nav-li">
-    
-    
-    
-        
-        
-            <a class="
-
-    terminal-mkdocs-side-nav-item" href="guide/">Guide</a>
-        
-    
-    
-    
-  </li>
-        
-          
+                        </li>
 
 
 
-<li class="terminal-mkdocs-side-nav-li">
-    
-    
-        
-        
 
-        
-            
-    
-        
-        
-            
-            
-            <span class="
+
+                        <li class="terminal-mkdocs-side-nav-li">
+
+
+
+
+
+                            <a class="
+
+    terminal-mkdocs-side-nav-item" href="guide/index.html">Guide</a>
+
+
+
+
+                        </li>
+
+
+
+
+
+                        <li class="terminal-mkdocs-side-nav-li">
+
+
+
+
+
+
+
+
+
+
+
+
+                            <span class="
         
     
 
     terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Core Concepts</span>
-        
-    
-    
-        
-      
-        
-            <ul class="terminal-mkdocs-side-nav-li-ul">
-        
-            
-            
-
-             
-                <li class="terminal-mkdocs-side-nav-li-ul-li">
-    
-        
-        
-            <a class="
-
-    terminal-mkdocs-side-nav-item" href="core_abstraction/">Core Abstraction</a>
-        
-    
-    </li>
-            
-        
-            
-            
-
-             
-                <li class="terminal-mkdocs-side-nav-li-ul-li">
-    
-        
-        
-            <a class="
-
-    terminal-mkdocs-side-nav-item" href="flow/">Understanding Flows</a>
-        
-    
-    </li>
-            
-        
-            
-            
-
-             
-                <li class="terminal-mkdocs-side-nav-li-ul-li">
-    
-        
-        
-            <a class="
-
-    terminal-mkdocs-side-nav-item" href="decomp/">Task Decomposition</a>
-        
-    
-    </li>
-            
-            
-    </ul>
-        
-    
-  </li>
-        
-          
 
 
 
-<li class="terminal-mkdocs-side-nav-li">
-    
-    
-        
-        
 
-        
-            
-    
-        
-        
-            
-            
-            <span class="
+
+
+                            <ul class="terminal-mkdocs-side-nav-li-ul">
+
+
+
+
+
+                                <li class="terminal-mkdocs-side-nav-li-ul-li">
+
+
+
+                                    <a class="
+
+    terminal-mkdocs-side-nav-item" href="core_abstraction/index.html">Core Abstraction</a>
+
+
+                                </li>
+
+
+
+
+
+
+                                <li class="terminal-mkdocs-side-nav-li-ul-li">
+
+
+
+                                    <a class="
+
+    terminal-mkdocs-side-nav-item" href="flow/index.html">Understanding Flows</a>
+
+
+                                </li>
+
+
+
+
+
+
+                                <li class="terminal-mkdocs-side-nav-li-ul-li">
+
+
+
+                                    <a class="
+
+    terminal-mkdocs-side-nav-item" href="decomp/index.html">Task Decomposition</a>
+
+
+                                </li>
+
+
+                            </ul>
+
+
+                        </li>
+
+
+
+
+
+                        <li class="terminal-mkdocs-side-nav-li">
+
+
+
+
+
+
+
+
+
+
+
+
+                            <span class="
         
     
 
     terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Implementation</span>
-        
-    
-    
-        
-      
-        
-            <ul class="terminal-mkdocs-side-nav-li-ul">
-        
-            
-            
-
-             
-                <li class="terminal-mkdocs-side-nav-li-ul-li">
-    
-        
-        
-            <a class="
-
-    terminal-mkdocs-side-nav-item" href="preparation/">Setup</a>
-        
-    
-    </li>
-            
-            
-    </ul>
-        
-    
-  </li>
-        
-          
 
 
 
-<li class="terminal-mkdocs-side-nav-li">
-    
-    
-    
-        
-        
-            <a class="
 
-    terminal-mkdocs-side-nav-item" href="apps/">Applications</a>
-        
-    
-    
-    
-  </li>
-        
-    </ul>
-  
-</nav><hr>
-<nav>
-    <ul>
-        <li><a href="#pocket-flow">Pocket Flow</a></li>
-        <li><a href="#architecture">Architecture</a></li><li><a href="#getting-started">Getting Started</a></li><li><a href="#core-concepts">Core Concepts</a></li><li><a href="#features-extensions">Features &amp; Extensions</a></li><li><a href="#additional-resources">Additional Resources</a></li>
-    </ul>
-</nav>
-</aside>
+
+
+                            <ul class="terminal-mkdocs-side-nav-li-ul">
+
+
+
+
+
+                                <li class="terminal-mkdocs-side-nav-li-ul-li">
+
+
+
+                                    <a class="
+
+    terminal-mkdocs-side-nav-item" href="preparation/index.html">Setup</a>
+
+
+                                </li>
+
+
+                            </ul>
+
+
+                        </li>
+
+
+
+
+
+                        <li class="terminal-mkdocs-side-nav-li">
+
+
+
+
+
+                            <a class="
+
+    terminal-mkdocs-side-nav-item" href="apps/index.html">Applications</a>
+
+
+
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <hr>
+                <nav>
+                    <ul>
+                        <li><a href="#pocket-flow">Pocket Flow</a></li>
+                        <li><a href="#architecture">Architecture</a></li>
+                        <li><a href="#getting-started">Getting Started</a></li>
+                        <li><a href="#core-concepts">Core Concepts</a></li>
+                        <li><a href="#features-extensions">Features &amp; Extensions</a></li>
+                        <li><a href="#additional-resources">Additional Resources</a></li>
+                    </ul>
+                </nav>
+            </aside>
             <main id="terminal-mkdocs-main-content">
-    
-    
-    
-    
-    
 
-<section id="mkdocs-terminal-content">
-    <h1 id="pocket-flow">Pocket Flow</h1>
-<p>A TypeScript framework for building <strong>LLM-powered applications</strong> with:
-- 🤖 Intelligent Agents
-- 🧩 Task Decomposition
-- 📚 Retrieval Augmented Generation (RAG)
-- And more...</p>
-<h2 id="architecture">Architecture</h2>
-<p>We model LLM workflows as a <strong>Nested Directed Graph</strong> where:</p>
-<ul>
-<li>🔹 <strong>Nodes</strong> handle atomic LLM tasks</li>
-<li>🔗 <strong>Actions</strong> connect nodes (labeled edges) for agent behavior</li>
-<li>🔄 <strong>Flows</strong> orchestrate node graphs for task decomposition</li>
-<li>📦 <strong>Nesting</strong> allows flows to be used as nodes</li>
-<li>📊 <strong>Batch</strong> processing for data-intensive tasks</li>
-<li>⚡ <strong>Async</strong> support for parallel execution</li>
-</ul>
-<div align="center">
-  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/minillmflow.jpg?raw=true" width="400"/>
-</div>
 
-<hr />
-<h2 id="getting-started">Getting Started</h2>
-<ul>
-<li><a href="guide/">Quick Start</a></li>
-<li><a href="preparation/">Setup Steps</a></li>
-<li><a href="core_abstraction/">Key Abstractions</a></li>
-</ul>
-<h2 id="core-concepts">Core Concepts</h2>
-<ul>
-<li><a href="agent/">Agent Basics</a></li>
-<li><a href="node/">Node Fundamentals</a></li>
-<li><a href="flow/">Understanding Flows</a></li>
-<li><a href="structure/">Data Structures</a></li>
-</ul>
-<h2 id="features-extensions">Features &amp; Extensions</h2>
-<h3 id="basic-features">Basic Features</h3>
-<ul>
-<li><a href="async/">Async Processing</a></li>
-<li><a href="batch/">Batch Operations</a></li>
-<li><a href="communication/">Communication Patterns</a></li>
-<li><a href="decomp/">Task Decomposition</a></li>
-</ul>
-<h3 id="advanced-capabilities">Advanced Capabilities</h3>
-<ul>
-<li><a href="llm/">Large Language Models</a></li>
-<li><a href="mapreduce/">MapReduce Workflows</a></li>
-<li><a href="memory/">Memory &amp; Caching</a></li>
-<li><a href="multi_agent/">Multi-Agent Systems</a></li>
-<li><a href="parallel/">Parallel Execution</a></li>
-<li><a href="rag/">Retrieval Augmented Generation</a></li>
-<li><a href="tool/">Tool Integrations</a></li>
-</ul>
-<h2 id="additional-resources">Additional Resources</h2>
-<ul>
-<li><a href="apps/">Sample Applications</a></li>
-<li><a href="paradigm/">Conceptual Paradigms</a></li>
-<li><a href="viz/">Visualizations</a></li>
-</ul>
-<hr />
-<div align="center">
-  <p><i>Built with TypeScript for production-grade LLM applications</i></p>
-</div>
-</section>
 
-<section id="mkdocs-terminal-after-content">
-    
-</section>
+
+
+
+                <section id="mkdocs-terminal-content">
+                    <h1 id="pocket-flow">Pocket Flow</h1>
+                    <p>A TypeScript framework for building <strong>LLM-powered applications</strong> with:
+                        - 🤖 Intelligent Agents
+                        - 🧩 Task Decomposition
+                        - 📚 Retrieval Augmented Generation (RAG)
+                        - And more...</p>
+                    <h2 id="architecture">Architecture</h2>
+                    <p>We model LLM workflows as a <strong>Nested Directed Graph</strong> where:</p>
+                    <ul>
+                        <li>🔹 <strong>Nodes</strong> handle atomic LLM tasks</li>
+                        <li>🔗 <strong>Actions</strong> connect nodes (labeled edges) for agent behavior</li>
+                        <li>🔄 <strong>Flows</strong> orchestrate node graphs for task decomposition</li>
+                        <li>📦 <strong>Nesting</strong> allows flows to be used as nodes</li>
+                        <li>📊 <strong>Batch</strong> processing for data-intensive tasks</li>
+                        <li>⚡ <strong>Async</strong> support for parallel execution</li>
+                    </ul>
+                    <div align="center">
+                        <img src="img/minillmflow.jpg" width="400" />
+                    </div>
+
+                    <hr />
+                    <h2 id="getting-started">Getting Started</h2>
+                    <ul>
+                        <li><a href="guide/index.html">Quick Start</a></li>
+                        <li><a href="preparation/index.html">Setup Steps</a></li>
+                        <li><a href="core_abstraction/index.html">Key Abstractions</a></li>
+                    </ul>
+                    <h2 id="core-concepts">Core Concepts</h2>
+                    <ul>
+                        <li><a href="agent/index.html">Agent Basics</a></li>
+                        <li><a href="node/index.html">Node Fundamentals</a></li>
+                        <li><a href="flow/index.html">Understanding Flows</a></li>
+                        <li><a href="structure/index.html">Data Structures</a></li>
+                    </ul>
+                    <h2 id="features-extensions">Features &amp; Extensions</h2>
+                    <h3 id="basic-features">Basic Features</h3>
+                    <ul>
+                        <li><a href="async/index.html">Async Processing</a></li>
+                        <li><a href="batch/index.html">Batch Operations</a></li>
+                        <li><a href="communication/index.html">Communication Patterns</a></li>
+                        <li><a href="decomp/index.html">Task Decomposition</a></li>
+                    </ul>
+                    <h3 id="advanced-capabilities">Advanced Capabilities</h3>
+                    <ul>
+                        <li><a href="llm/index.html">Large Language Models</a></li>
+                        <li><a href="mapreduce/index.html">MapReduce Workflows</a></li>
+                        <li><a href="memory/index.html">Memory &amp; Caching</a></li>
+                        <li><a href="multi_agent/index.html">Multi-Agent Systems</a></li>
+                        <li><a href="parallel/index.html">Parallel Execution</a></li>
+                        <li><a href="rag/index.html">Retrieval Augmented Generation</a></li>
+                        <li><a href="tool/index.html">Tool Integrations</a></li>
+                    </ul>
+                    <h2 id="additional-resources">Additional Resources</h2>
+                    <ul>
+                        <li><a href="apps/index.html">Sample Applications</a></li>
+                        <li><a href="paradigm/index.html">Conceptual Paradigms</a></li>
+                        <li><a href="viz/index.html">Visualizations</a></li>
+                    </ul>
+                    <hr />
+                    <div align="center">
+                        <p><i>Built with TypeScript for production-grade LLM applications</i></p>
+                    </div>
+                </section>
+
+                <section id="mkdocs-terminal-after-content">
+
+                </section>
 
             </main>
         </div>
-        <hr><footer>
-    <div class="terminal-mkdocs-footer-grid">
-        <div id="terminal-mkdocs-footer-copyright-info">
-             Site built with <a href="http://www.mkdocs.org">MkDocs</a> and <a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
-        </div>
-    </div>
-</footer>
+        <hr>
+        <footer>
+            <div class="terminal-mkdocs-footer-grid">
+                <div id="terminal-mkdocs-footer-copyright-info">
+                    Site built with <a href="http://www.mkdocs.org">MkDocs</a> and <a
+                        href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+                </div>
+            </div>
+        </footer>
     </div>
 
-    
-    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="alertdialog" aria-modal="true" aria-labelledby="searchModalLabel">
-    <div class="modal-dialog modal-lg" role="search">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="searchModalLabel">Search</h5>
-                <button type="button" class="close btn btn-default btn-ghost" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-                <p id="searchInputLabel">Type to start searching</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" aria-labelledby="searchInputLabel" placeholder="" id="mkdocs-search-query" title="Please enter search terms here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No document matches found"></div>
-            </div>
-            <div class="modal-footer">
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="alertdialog" aria-modal="true"
+        aria-labelledby="searchModalLabel">
+        <div class="modal-dialog modal-lg" role="search">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                    <button type="button" class="close btn btn-default btn-ghost" data-dismiss="modal"><span
+                            aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+                </div>
+                <div class="modal-body">
+                    <p id="searchInputLabel">Type to start searching</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="search" class="form-control" aria-labelledby="searchInputLabel" placeholder=""
+                                id="mkdocs-search-query" title="Please enter search terms here">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results" data-no-results-text="No document matches found"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
             </div>
         </div>
     </div>
-</div>
-    
-    
+
+
 </body>
 
 </html>

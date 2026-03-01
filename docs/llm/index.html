@@ -82,7 +82,7 @@
 <body class="terminal"><div class="container">
     <div class="terminal-nav">
         <header class="terminal-logo">
-            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Pocket Flow Framework</a></div>
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="../index.html" class="no-style">Pocket Flow Framework</a></div>
         </header>
         
         <nav class="terminal-menu">
@@ -91,7 +91,7 @@
                 
                 
                 <li property="itemListElement" typeof="ListItem">
-                    <a href=".." class="menu-item " property="item" typeof="WebPage">
+                    <a href="../index.html" class="menu-item " property="item" typeof="WebPage">
                         <span property="name">Home</span>
                     </a>
                     <meta property="position" content="0">
@@ -99,7 +99,7 @@
                 
                 
                 <li property="itemListElement" typeof="ListItem">
-                    <a href="../guide/" class="menu-item " property="item" typeof="WebPage">
+                    <a href="../guide/index.html" class="menu-item " property="item" typeof="WebPage">
                         <span property="name">Guide</span>
                     </a>
                     <meta property="position" content="1">
@@ -111,7 +111,7 @@
                 
                 
                 <li property="itemListElement" typeof="ListItem">
-                    <a href="../apps/" class="menu-item " property="item" typeof="WebPage">
+                    <a href="../apps/index.html" class="menu-item " property="item" typeof="WebPage">
                         <span property="name">Applications</span>
                     </a>
                     <meta property="position" content="2">
@@ -151,7 +151,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="..">Home</a>
+    terminal-mkdocs-side-nav-item" href="../index.html">Home</a>
         
     
     
@@ -170,7 +170,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../guide/">Guide</a>
+    terminal-mkdocs-side-nav-item" href="../guide/index.html">Guide</a>
         
     
     
@@ -217,7 +217,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../core_abstraction/">Core Abstraction</a>
+    terminal-mkdocs-side-nav-item" href="../core_abstraction/index.html">Core Abstraction</a>
         
     
     </li>
@@ -233,7 +233,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../flow/">Understanding Flows</a>
+    terminal-mkdocs-side-nav-item" href="../flow/index.html">Understanding Flows</a>
         
     
     </li>
@@ -249,7 +249,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../decomp/">Task Decomposition</a>
+    terminal-mkdocs-side-nav-item" href="../decomp/index.html">Task Decomposition</a>
         
     
     </li>
@@ -300,7 +300,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../preparation/">Setup</a>
+    terminal-mkdocs-side-nav-item" href="../preparation/index.html">Setup</a>
         
     
     </li>
@@ -323,7 +323,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../apps/">Applications</a>
+    terminal-mkdocs-side-nav-item" href="../apps/index.html">Applications</a>
         
     
     
@@ -384,7 +384,7 @@ export async function callLLM(prompt: string): Promise&lt;string&gt; {
 </code></pre>
 <blockquote>
 <p>Always store the API key in a secure environment variable (e.g., <code>OPENAI_API_KEY</code>) rather than hardcoding it.<br />
-{: .note }</p>
+</p>
 </blockquote>
 <h2 id="improvements">Improvements</h2>
 <p>Feel free to enhance your <code>callLLM</code> function as needed. Below are some common patterns:</p>
@@ -442,7 +442,7 @@ export async function cachedCallLLM(prompt: string, useCache: boolean): Promise&
 <blockquote>
 <p>⚠️ Caching conflicts with Node retries, since retries yield the same result.<br />
 You could only use cached results on the first attempt and bypass the cache on subsequent retries.<br />
-{: .warning }</p>
+</p>
 </blockquote>
 <h3 id="3-enabling-logging">3. Enabling Logging</h3>
 <p>Use your logging framework (e.g., <a href="https://www.npmjs.com/package/winston">winston</a>, <a href="https://www.npmjs.com/package/pino">pino</a>, or Node.js <code>console</code>) to track prompts and responses:</p>

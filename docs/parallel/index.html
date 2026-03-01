@@ -82,7 +82,7 @@
 <body class="terminal"><div class="container">
     <div class="terminal-nav">
         <header class="terminal-logo">
-            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Pocket Flow Framework</a></div>
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="../index.html" class="no-style">Pocket Flow Framework</a></div>
         </header>
         
         <nav class="terminal-menu">
@@ -91,7 +91,7 @@
                 
                 
                 <li property="itemListElement" typeof="ListItem">
-                    <a href=".." class="menu-item " property="item" typeof="WebPage">
+                    <a href="../index.html" class="menu-item " property="item" typeof="WebPage">
                         <span property="name">Home</span>
                     </a>
                     <meta property="position" content="0">
@@ -99,7 +99,7 @@
                 
                 
                 <li property="itemListElement" typeof="ListItem">
-                    <a href="../guide/" class="menu-item " property="item" typeof="WebPage">
+                    <a href="../guide/index.html" class="menu-item " property="item" typeof="WebPage">
                         <span property="name">Guide</span>
                     </a>
                     <meta property="position" content="1">
@@ -111,7 +111,7 @@
                 
                 
                 <li property="itemListElement" typeof="ListItem">
-                    <a href="../apps/" class="menu-item " property="item" typeof="WebPage">
+                    <a href="../apps/index.html" class="menu-item " property="item" typeof="WebPage">
                         <span property="name">Applications</span>
                     </a>
                     <meta property="position" content="2">
@@ -151,7 +151,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="..">Home</a>
+    terminal-mkdocs-side-nav-item" href="../index.html">Home</a>
         
     
     
@@ -170,7 +170,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../guide/">Guide</a>
+    terminal-mkdocs-side-nav-item" href="../guide/index.html">Guide</a>
         
     
     
@@ -217,7 +217,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../core_abstraction/">Core Abstraction</a>
+    terminal-mkdocs-side-nav-item" href="../core_abstraction/index.html">Core Abstraction</a>
         
     
     </li>
@@ -233,7 +233,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../flow/">Understanding Flows</a>
+    terminal-mkdocs-side-nav-item" href="../flow/index.html">Understanding Flows</a>
         
     
     </li>
@@ -249,7 +249,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../decomp/">Task Decomposition</a>
+    terminal-mkdocs-side-nav-item" href="../decomp/index.html">Task Decomposition</a>
         
     
     </li>
@@ -300,7 +300,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../preparation/">Setup</a>
+    terminal-mkdocs-side-nav-item" href="../preparation/index.html">Setup</a>
         
     
     </li>
@@ -323,7 +323,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../apps/">Applications</a>
+    terminal-mkdocs-side-nav-item" href="../apps/index.html">Applications</a>
         
     
     
@@ -352,7 +352,7 @@
 <p><strong>Parallel</strong> Nodes and Flows let you run multiple <strong>Async</strong> Nodes and Flows <strong>concurrently</strong>—for example, summarizing multiple texts at once. This can improve performance by overlapping I/O and compute.</p>
 <blockquote>
 <p>In Node.js, JavaScript can only have true parallelism when using worker threads or multiple processes, but using async/await can still <strong>overlap I/O</strong> operations (e.g., LLM/network/database calls) effectively.
-{: .warning }</p>
+</p>
 </blockquote>
 <h2 id="1-asyncparallelbatchnode">1. AsyncParallelBatchNode</h2>
 <p>This concept is akin to an <strong>AsyncBatchNode</strong> but runs <code>execAsync()</code> in <strong>parallel</strong> for each item. Let's define a <code>ParallelSummaries</code> node that splits an array of texts, calls an LLM for each one <strong>in parallel</strong>, and then combines results:</p>
